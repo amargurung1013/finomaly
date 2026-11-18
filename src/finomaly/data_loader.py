@@ -1,5 +1,5 @@
 import polars as pl
-
+from pathlib import Path
 from finomaly.config import DATASET_PATH, REQUIRED_COLUMNS
 
 
@@ -9,9 +9,11 @@ def load_transactions(path=DATASET_PATH) -> pl.DataFrame:
     Validate the required columns before loading.
     """
 
+    path = Path(path)
+
     if not path.exists():
         raise FileNotFoundError(f"Dataset not found: {path}")
-
+    
     # Inspect CSV schema before loading
     schema = pl.scan_csv(path).collect_schema()
 
