@@ -22,5 +22,6 @@ data/processed/*
 .mypy_cache/
 .ruff_cache/
 
-# OS files
+# OS and editor files
 .DS_Store
+.vscode/
